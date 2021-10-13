@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "X9TsCxL7NQb3ivJ7i6f5b+v7Uo8TqtKCtWk9OFwKKjOVJthR1pcENHJLz89wI9SFc2Daigq0yPpUUjb/T8JdDA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yuli\\Desktop\\Programming\\Web-Exams\\SUS.HTTP\\SUS.HTTP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yuli\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\yuli\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
