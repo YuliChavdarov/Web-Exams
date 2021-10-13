@@ -128,3 +128,4 @@ C:\Users\yuli\Desktop\Programming\Web-Exams\Apps\Git\obj\Debug\netcoreapp3.1\Git
 C:\Users\yuli\Desktop\Programming\Web-Exams\Apps\Git\obj\Debug\netcoreapp3.1\Git.dll
 C:\Users\yuli\Desktop\Programming\Web-Exams\Apps\Git\obj\Debug\netcoreapp3.1\Git.pdb
 C:\Users\yuli\Desktop\Programming\Web-Exams\Apps\Git\obj\Debug\netcoreapp3.1\Git.genruntimeconfig.cache
+C:\Users\yuli\Desktop\Programming\Web-Exams\Apps\Git\obj\Debug\netcoreapp3.1\Git.csproj.CopyComplete

@@ -11,6 +11,8 @@ namespace SUS.HTTP
 {
     public class HttpServer : IHttpServer
     {
+        public static IDictionary<string, Dictionary<string, string>> Sessions = new Dictionary<string, Dictionary<string, string>>();
+
         List<Route> routeTable;
 
         public HttpServer(List<Route> routeTable)
@@ -67,13 +69,49 @@ namespace SUS.HTTP
                     var route = this.routeTable.FirstOrDefault(
                         x => string.Compare(x.Path, request.Path, true) == 0
                             && x.Method == request.Method);
-                    
+
                     HttpResponse response;
 
                     if (route != null)
                     {
+                        var sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
+
+                        if (sessionCookie == null)
+                        {
+                            var sessionId = Guid.NewGuid().ToString();
+                            request.Session = new Dictionary<string, string>();
+                            Sessions.Add(sessionId, request.Session);
+                            request.Cookies.Add(new Cookie(HttpConstants.SessionCookieName, sessionId));
+                        }
+                        else if (!Sessions.ContainsKey(sessionCookie.Value))
+                        {
+                            request.Session = new Dictionary<string, string>();
+                            Sessions.Add(sessionCookie.Value, request.Session);
+                        }
+                        else
+                        {
+                            request.Session = Sessions[sessionCookie.Value];
+                        }
+
                         response = route.Action(request);
+
+                        sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
+
+                        if (sessionCookie != null)
+                        {
+                            var responseSessionCookie = new ResponseCookie(sessionCookie.Name, sessionCookie.Value);
+                            responseSessionCookie.Path = "/";
+                            response.Cookies.Add(responseSessionCookie);
+                        }
+
+                        else
+                        {
+                            // No, because we give the request a new sessionId and session if it did not send any or
+                            // if the sent one is not found
+                            Console.WriteLine("It reaches???");
+                        }
                     }
+
                     else
                     {
                         // Not Found 404
@@ -81,21 +119,6 @@ namespace SUS.HTTP
                     }
 
                     response.Headers.Add(new Header("Server", "SUS Server 1.0"));
-
-                    var sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
-                    if (sessionCookie != null)
-                    {
-                        var responseSessionCookie = new ResponseCookie(sessionCookie.Name, sessionCookie.Value);
-                        responseSessionCookie.Path = "/";
-                        response.Cookies.Add(responseSessionCookie);
-                    }
-
-                    else
-                    {
-                        // No, because parsing HttpRequest from the received bytearray as string in its constructor
-                        // sets it to a new sessionId GUID if no session cookie was sent
-                        Console.WriteLine("It reaches???");
-                    }
 
                     var responseHeaderBytes = Encoding.UTF8.GetBytes(response.ToString());
                     await stream.WriteAsync(responseHeaderBytes, 0, responseHeaderBytes.Length);
@@ -108,7 +131,7 @@ namespace SUS.HTTP
 
                 tcpClient.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
