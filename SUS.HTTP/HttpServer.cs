@@ -106,8 +106,7 @@ namespace SUS.HTTP
 
                         else
                         {
-                            // No, because we give the request a new sessionId and session if it did not send any or
-                            // if the sent one is not found
+                            // It shouldn't reach, unless route.Action(request) deletes the request's session cookie
                             Console.WriteLine("It reaches???");
                         }
                     }
