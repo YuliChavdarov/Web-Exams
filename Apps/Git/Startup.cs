@@ -18,6 +18,8 @@
         public void ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.Add<IUsersService, UsersService>();
+            serviceCollection.Add<IRepositoriesService, RepositoriesService>();
+            serviceCollection.Add<ICommitsService, CommitsService>();
         }
     }
 }

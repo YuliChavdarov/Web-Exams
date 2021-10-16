@@ -32,7 +32,6 @@ namespace Git.Services
             context.SaveChanges();
 
             return user.Id;
-
         }
 
         public string GetUserId(string username, string password)

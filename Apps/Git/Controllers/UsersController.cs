@@ -22,12 +22,21 @@ namespace Git.Controllers
         [HttpGet]
         public HttpResponse Register()
         {
+            if (this.IsUserSignedIn())
+            {
+                return this.Redirect("/Repositories/All");
+            }
+
             return this.View();
         }
 
         [HttpPost]
         public HttpResponse Register(RegisterInputModel input)
         {
+            if(this.IsUserSignedIn())
+            {
+                return this.Redirect("/Repositories/All");
+            }
 
             if (input.Username == null || input.Username.Length < GlobalConstants.UsernameMinLength
                 || input.Username.Length > GlobalConstants.UsernameMaxLength)
@@ -95,6 +104,13 @@ namespace Git.Controllers
             this.SignIn(userId);
 
             return this.Redirect("/Repositories/All");
+        }
+
+        public HttpResponse Logout()
+        {
+            this.SignOut();
+
+            return this.Redirect("/");
         }
     }
 }
