@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SUS.MvcFramework.Tests", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Git", "Apps\Git\Git.csproj", "{F7F9D37D-78F4-4517-A49B-99654CE64883}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarShop", "Apps\CarShop\CarShop.csproj", "{D7AC9C10-AAA9-4FFA-8416-B3AAB6A7B166}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +37,17 @@ Global
 		{F7F9D37D-78F4-4517-A49B-99654CE64883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7F9D37D-78F4-4517-A49B-99654CE64883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7F9D37D-78F4-4517-A49B-99654CE64883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7AC9C10-AAA9-4FFA-8416-B3AAB6A7B166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7AC9C10-AAA9-4FFA-8416-B3AAB6A7B166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7AC9C10-AAA9-4FFA-8416-B3AAB6A7B166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7AC9C10-AAA9-4FFA-8416-B3AAB6A7B166}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F7F9D37D-78F4-4517-A49B-99654CE64883} = {D058481A-B479-499D-ADB8-9108A526A334}
+		{D7AC9C10-AAA9-4FFA-8416-B3AAB6A7B166} = {D058481A-B479-499D-ADB8-9108A526A334}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DE8A1FE-A195-4206-8DF0-E23F1C7707C8}
